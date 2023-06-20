@@ -1,0 +1,235 @@
+{% load static %}
+<!DOCTYPE html>
+  <head>
+    <title>Url shortner</title>
+    <meta name="keywords" content="" />
+	<meta name="description" content="" />
+    <!-- 
+    Polygon Template
+    https://templatemo.com/tm-400-polygon
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="css/templatemo_misc.css">
+    <link href="{% static 'css/templatemo_style.css' %}" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,600' rel='stylesheet' type='text/css'>
+      
+    <script src="{% static 'js/jquery-1.10.2.min.js' %}"></script> 
+	<script src="{% static 'js/jquery.lightbox.js' %}"></script>
+	<script src="{% static 'js/templatemo_custom.js' %}"></script>
+    <script>
+    function showhide()
+    {
+    	var div = document.getElementById("newpost");
+		if (div.style.display !== "none")
+		{
+			div.style.display = "none";
+		}
+		else {
+			div.style.display = "block";
+		}
+    }
+  	</script>
+
+  </head>
+  <div class="site-header">
+		<div class="main-navigation">
+			<div class="responsive_menu">
+				<ul>
+					<li><a class="show-1 templatemo_home" href="{% url 'index' %}">Home</a></li>
+          <li><a class="show-2 templatemo_page2" href="{% url 'us' %}">Url shorner</a></li>
+					<li><a class="show-2 templatemo_page2" href="{% url 'yd' %}">Youtube</a></li>
+					<li><a class="show-3 templatemo_page3" href="{% url 'bgremove:home' %}">Background remover</a></li>
+					<li><a class="show-5 templatemo_page5" href="#">Contact</a></li>
+				</ul>
+			</div>
+
+			<div class="container">
+				<div class="row templatemo_gallerygap">
+					<div class="col-md-12 responsive-menu">
+						<a href="#" class="menu-toggle-btn">
+				            <i class="fa fa-bars"></i>
+				        </a>
+					</div> <!-- /.col-md-12 -->
+                    <div class="col-md-3 col-sm-12">
+                    	<a href="{% url 'index' %}"><img style="width: 130px;margin-top: -3px;" src="{% static 'images/templatemo_logo.png' %}" alt="Polygon HTML5 Template"></a>
+                    </div>
+					<div class="col-md-9 main_menu">
+						<ul>
+							<li><a href="{% url 'index' %}">
+                            	<span class="fa fa-home"></span>
+                                Home</a></li>
+              <li><a href="{% url 'us' %}">
+                                  <span class="fa fa-scissors">url</span>
+                                    Url shortner</a></li>
+							<li><a  href="{% url 'yd' %}">
+                            	<span class="fa fa-download"></span>
+                          		 Youtube</a></li>
+							<li><a  href="{% url 'bgremove:home' %}">
+                            	<span class="fa fa-scissors"></span>
+                            	Bg Remover</a></li>
+							<li><a class="show-5 templatemo_page5" href="#">
+                            	<span class="fa fa-envelope"></span>
+                                Contact</a></li>
+						</ul>
+					</div> <!-- /.col-md-12 -->
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.main-navigation -->
+	</div> <!-- /.site-header -->
+  
+<body class="body">
+  <head>
+    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <style>
+        *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+section {
+ 
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Lato", sans-serif;
+  line-height: 1.5;
+  color: #111;
+}
+
+main {
+  max-width: 720px;
+  width: 100%;
+  border: 2.5px solid #e08711;
+  border-radius: 2.5px;
+  box-shadow: 0 10px 20px rgba(17, 17, 17, 0.125),
+    0 5px 5px rgba(17, 17, 17, 0.25);
+  background-image: linear-gradient(to top, #30cfd0 0%, #f00969 100%);
+}
+
+h1 {
+  padding: 1rem;
+  color: white;
+}
+
+input,
+button {
+  font-family: inherit;
+  line-height: inherit;
+  color: inherit;
+  border: 0;
+  padding: 1rem;
+}
+
+input {
+  box-sizing: border-box;
+  width: 100%;
+  border: 3px solid #000000;
+  color: #000000;
+}
+
+.buttons {
+  display: flex;
+}
+
+button {
+  cursor: pointer;
+  flex: 1;
+  background-color: transparent;
+  color: white;
+  font-size: large;
+ 
+}
+button:hover{
+  color: #f00969;
+
+}
+section {
+  min-height: 120px;
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+}
+
+    </style>
+</head>
+
+<center>
+  <div >
+    <main>
+      <h1 style="width: 100%;">URL Shortener</h1>
+      <form id="post-form" method="POST">
+        {% csrf_token %}
+      <input type="text" name="link" id="link" placeholder="Enter URL here">
+      <div class="buttons">
+        <button type="submit" id="shorten">Shorten</button>
+      </div>
+      </form>
+      
+      <section id="section"><h2></h2></section>
+        
+    </main>
+    
+  </div>
+  
+</center>
+
+<script type="text/javascript">
+  $(document).on('submit','#post-form',function(e){
+    e.preventDefault();
+
+    $.ajax({
+      type:'POST',
+      url:'/us/create',
+      data:{
+        link:$('#link').val(),
+        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success: function(data){
+        $('h2').html("localhost:8000/"+data)
+      }
+    });
+  });
+</script>
+</body>
+
+<div class="templatemo_footer">
+  <div class="container">
+  <div class="row">
+      <div class="col-md-9 col-sm-12">
+          <span>Copyright &copy; 2014 Company Name | Design: TemplateMo</span>
+        </div>
+        <div class="col-md-3 col-sm-12 templatemo_rfooter">
+            <a href="#">
+               <div class="hex_footer">
+      <span class="fa fa-facebook"></span>
+      </div>
+              </a>
+              <a href="#">
+                <div class="hex_footer">
+       <span class="fa fa-twitter"></span>
+      </div>
+                </a>
+              <a href="#">
+               <div class="hex_footer">
+       <span class="fa fa-linkedin"></span>
+      </div>
+             </a>
+            <a href="#">
+              <div class="hex_footer">
+       <span class="fa fa-rss"></span>
+      </div>
+            </a>
+        </div>
+    </div>
+    </div>
+</div>
